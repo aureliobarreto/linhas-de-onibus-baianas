@@ -4,7 +4,7 @@
   "description": "api linhas de onibus baianas",
   "main": "index.js",
   "scripts": {
-    "prod": "node ./bin/server.js",
+    "dev": "nodemon ./bin/server.js",
     "start": "node ./bin/server.js"
   },
   "author": "Amanda Santos, Aurelio Barreto",
