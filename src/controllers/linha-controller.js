@@ -46,7 +46,7 @@ exports.post = (req, res, next) => {
 exports.buscarLinhaPorParada = async (req, res, next) => {
     // select all from linhas where paradas contains
     console.log(req.body)
-    await Linha.find({paradas: req.body.nome}).exec().then(data => {
+    await Linha.find({paradas: new RegExp(req.body.nome, 'i')}).exec().then(data => {
     // await Linha.find({paradas: new RegExp(req.body.nome, 'i')}).exec().then(data => {
         if(data != null){
             res.status(200).send(data)
