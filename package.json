@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prod": "node ./bin/server.js",
-    "start": "nodemon ./bin/server.js"
+    "start": "node ./bin/server.js"
   },
   "author": "Amanda Santos, Aurelio Barreto",
   "license": "ISC",
