@@ -6,6 +6,6 @@ router.post('/', controller.post);
 router.get('/', controller.get);
 router.get('/buscarLinhaPorNome', controller.buscarLinhaPorNome);
 router.get('/buscarLinhaPorParada', controller.buscarLinhaPorParada);
-router.post('/buscarLinhaPorTrecho', controller.buscarLinhaPorTrecho);
+router.get('/buscarLinhaPorTrecho', controller.buscarLinhaPorTrecho);
 
 module.exports = router;

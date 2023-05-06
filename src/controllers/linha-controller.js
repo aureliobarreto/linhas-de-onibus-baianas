@@ -72,6 +72,7 @@ exports.buscarLinhaPorTrecho = async (req, res, next) => {
         res.status(400).send(e)
     })        
 }
+
 // TODO: buscarLinhaPorTrechoEAgenda
 exports.buscarLinhaPorTrechoEAgenda = async (req, res, next) => {
     await Linha.find({paradas: new RegExp(req.body.nome, 'i')}).find({horariosOrigem: req.body.hora}).exec().then(data => {
