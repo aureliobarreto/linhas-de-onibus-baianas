@@ -8,4 +8,5 @@ router.get('/buscarLinhaPorNome', controller.buscarLinhaPorNome);
 router.get('/buscarLinhaPorParada', controller.buscarLinhaPorParada);
 router.get('/buscarLinhaPorTrecho', controller.buscarLinhaPorTrecho);
 
+
 module.exports = router;

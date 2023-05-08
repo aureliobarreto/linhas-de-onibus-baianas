@@ -3,7 +3,6 @@ const linha = require('../models/linha');
 const Linha = mongoose.model('linha');
 
 exports.get = ('/', (req ,res, next) => {    
-    
     Linha.find({}).then(data => {
         res.status(200).send(data)
     }).catch(e => {
