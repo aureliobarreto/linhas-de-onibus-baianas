@@ -3,8 +3,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 function App() {
   return (
-    <Router>
-      
+    <Router>      
       <Routes>
         <Route exact path="/" element={<Home />} > </Route>
         <Route exact path="/about" element={<About />} > </Route>
