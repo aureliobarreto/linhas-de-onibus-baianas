@@ -19,6 +19,8 @@ function Home() {
                 <BasicTextField title={"Destino"} />
                 <BasicButton text={"BUSCAR"}/>
             </Box>
+
+            <a href="/about">Sobre nós</a>
         </div>
     )
 }
