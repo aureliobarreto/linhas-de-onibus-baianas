@@ -8,7 +8,7 @@ import dayjs from 'dayjs';
 export default function BasicDatePicker() {
   const [value, setValue] = React.useState(dayjs());
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
+    <LocalizationProvider  dateAdapter={AdapterDayjs}>
       <DemoContainer components={['DatePicker']}>
         <DatePicker value={value} onChange={(newValue) => setValue(newValue)} />
       </DemoContainer>
