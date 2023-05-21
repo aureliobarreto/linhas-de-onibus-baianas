@@ -21,14 +21,13 @@ mongoose.connect('mongodb+srv://amandassa504:TsxhnYwomqFZCAh6@linhas.xgtz8ps.mon
 // carrega os Models
 const Linha = require('./models/linha');
 // carrega as Rotas
-const indexRoutes = require('./routes/index-routes')
 const linhaRoutes = require('./routes/linha-routes')
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 
 
-app.use('/', indexRoutes);
+app.use('/', linhaRoutes);
 app.use('/linha', linhaRoutes);
 
 module.exports = app;

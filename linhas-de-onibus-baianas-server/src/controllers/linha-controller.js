@@ -3,6 +3,7 @@ const linha = require('../models/linha');
 const Linha = mongoose.model('linha');
 
 exports.get = ('/', (req ,res, next) => {    
+    console.log("INDEX")
     Linha.find({}).then(data => {
         res.status(200).send(data)
     }).catch(e => {
@@ -12,8 +13,7 @@ exports.get = ('/', (req ,res, next) => {
 });
 
 exports.post = (req, res, next) => {
-    //console.log(req.body);
-    linha = new Linha(req.body);
+    let linha = new Linha(req.body);
     linha.save().then(x => {
         res.status(200).send({
             message: 'Linha cadastrada com sucesso'
@@ -27,7 +27,7 @@ exports.post = (req, res, next) => {
 };
 
 exports.buscarLinhaPorNome = async (req, res, next) => {
-    await Linha.find({ nome: new RegExp(req.params.nome, 'i')}).exec().then(data => {
+    await Linha.find({ nome : new RegExp(req.params.nome, 'iu') }).exec().then(data => {
         if(data != null){
             res.status(200).send(data)
         }else{
@@ -43,7 +43,9 @@ exports.buscarLinhaPorNome = async (req, res, next) => {
 }
 
 exports.buscarLinhaPorParada = async (req, res, next) => {
-    await Linha.find({paradas: new RegExp(req.params.nome, 'i')}).exec().then(data => {
+    /// como fazer a query ignorando o acento no banco? =(
+    const parada = req.params.parada
+    await Linha.find({paradas: new RegExp(parada, 'i')}).exec().then(data => {
         if(data != null){
             res.status(200).send(data)
         }else{
@@ -72,9 +74,10 @@ exports.buscarLinhaPorTrecho = async (req, res, next) => {
     })        
 }
 
-// TODO: buscarLinhaPorTrechoEAgenda
 exports.buscarLinhaPorTrechoEAgenda = async (req, res, next) => {
-    await Linha.find({paradas: new RegExp(req.body.nome, 'i')}).find({horariosOrigem: req.body.hora}).exec().then(data => {
+    await Linha
+    .find({ $or: [{horariosOrigem: req.query.hora}, {horariosDestino: req.query.hora}]})
+    .find({paradas: {$all: [new RegExp(req.query.origem, 'i'), new RegExp(req.query.destino, 'i')]}}).exec().then(data => {
         if(data != null){
             res.status(200).send(data)
         }else{
