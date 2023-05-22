@@ -75,9 +75,11 @@ exports.buscarLinhaPorTrecho = async (req, res, next) => {
 }
 
 exports.buscarLinhaPorTrechoEAgenda = async (req, res, next) => {
+    console.log(req.query)
     await Linha
-    .find({ $or: [{horariosOrigem: req.query.hora}, {horariosDestino: req.query.hora}]})
-    .find({paradas: {$all: [new RegExp(req.query.origem, 'i'), new RegExp(req.query.destino, 'i')]}}).exec().then(data => {
+    .find({paradas: {$all: [new RegExp(req.query.origem, 'i'), new RegExp(req.query.destino, 'i')]}})
+    .find(req.query.hora != null ? { $or: [{horariosOrigem: req.query.hora}, {horariosDestino: req.query.hora}]} : {})
+    .exec().then(data => {
         if(data != null){
             res.status(200).send(data)
         }else{
