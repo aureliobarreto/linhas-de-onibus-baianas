@@ -30,7 +30,7 @@ const TabelaHorarios = ({ horarios, cidade }) => {
         >
           {`Saída ${cidade}`}
         </Typography>
-    <Table aria-labeledby='tableTitle' >
+    <Table aria-labelledby='tableTitle' >
       <TableHead>
         <TableRow>
           {diasSemana.map((dia) => (

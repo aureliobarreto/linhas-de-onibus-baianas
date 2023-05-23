@@ -18,8 +18,11 @@
       )
     );
     const lon3 = toRadians(lon1) + Math.atan2(By, Math.cos(toRadians(lat1)) + Bx);
-  
-    return [toDegrees(lat3),toDegrees(lon3)]    
+    if(isNaN(lat3)|| isNaN(lon3)) {
+        console.log('é NaN')
+        return [-12.465285, -41.458080]
+    }
+    return [toDegrees(lat3), toDegrees(lon3)]    
   }
   
   
